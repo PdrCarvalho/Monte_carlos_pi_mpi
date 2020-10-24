@@ -14,7 +14,6 @@ double resolve_pi(int n, int core, int argc, char const *argv[])
     double x, y;
     double pi =0.00;
     srand(time(NULL));
-    // printf("helo");
     MPI_Init(&argc, &argv);
     MPI_Comm_rank(MPI_COMM_WORLD, &taskid);
     MPI_Comm_size(MPI_COMM_WORLD, &numtasks);
@@ -22,25 +21,21 @@ double resolve_pi(int n, int core, int argc, char const *argv[])
     {
         x = ((double)rand() / (RAND_MAX));
         y = ((double)rand() / (RAND_MAX));
-        //    printf("x=%1.2f y= %1.2f\n",x,y);
         if (x * x + y * y < 1)
         {
             hit++;
         }
     }
-    // printf("hit=%d", hit);
     MPI_Reduce(&hit, &total_hit, 1, MPI_INTEGER, MPI_SUM, 0, MPI_COMM_WORLD);
-    // printf("hit= %d\n",hit);
     if (taskid == 0)
     {
         pi = (4.0 * ((double)total_hit) / ((double)n));
-        // printf("hit_total=%d\n",total_hit);
     } 
     MPI_Finalize();
     return pi;
 }
 
-int main(int argc, char const *argv[])
+int main(int argc, char **argv)
 {
     int N = atoi(argv[1]);
     int cores = atoi(argv[2]);

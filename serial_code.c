@@ -11,22 +11,20 @@ double resolve_pi(int n)
     {
        x =  ((double) rand() / (RAND_MAX));
        y = ((double) rand() / (RAND_MAX));
-    //    printf("x=%1.2f y= %1.2f\n",x,y);
        if (x*x + y*y < 1){
            hit++;
        }
 
     }
-    // printf("x=%d\n", hit);
     return (4.0*((double)hit)/((double)n));
 }
 
 int main(int argc, char const *argv[])
 {
-    int N = atoi(argv[1]);
-    // printf("%d",N);
+    int N = atol(argv[1]);
     time_t start_process = time(NULL);
     double pi = resolve_pi(N);
+    // double pi = 0.00;
     time_t end_process = time(NULL);
     FILE *fp;
     char outputFilename[] = "serial_time.txt";

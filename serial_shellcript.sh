@@ -16,7 +16,7 @@ g++ -g -Wall serial_code.c -o serial_code
 #Loop principal de execuções. São 10 tentativas
 	tentativas=5 #Quantas vezes o código será executado dado um par (cores,size)
 
-for size in 1600000000 1700000000 1800000000 2000000000 #tamanho do problema
+for size in 1800000000 1900000000 2000000000 2100000000 #tamanho do problema
         do   	
             echo -e "\n$size\t\t\c" >> "serial_time.txt" 
 

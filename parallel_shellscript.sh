@@ -18,7 +18,7 @@ mpicc -g -Wall parallel_code.c -o parallel_code
 
 	for cores in 2 4 8 #números de cores utilizados
 	do
-			for size in 1600000000 #tamanho do problema
+			for size in 1800000000 1900000000 2000000000 2100000000 #tamanho do problema
 			do   	
 				echo -e "\n$cores\t$size\t\t\c" >> "parallel_time.txt" 
 
